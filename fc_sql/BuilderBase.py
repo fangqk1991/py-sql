@@ -1,4 +1,5 @@
-from fc_sql import FCSQL, SQLException
+from .FCSQL import FCSQL
+from .SQLException import SQLException
 
 
 class BuilderBase:

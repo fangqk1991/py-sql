@@ -1,4 +1,9 @@
-from fc_sql import ISQLHandler, SQLAdder, SQLModifier, SQLRemover, SQLException, SQLSearcher
+from .ISQLHandler import ISQLHandler
+from .SQLAdder import SQLAdder
+from .SQLModifier import SQLModifier
+from .SQLRemover import SQLRemover
+from .SQLException import SQLException
+from .SQLSearcher import SQLSearcher
 
 
 class DBTools:

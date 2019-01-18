@@ -1,4 +1,5 @@
-from fc_sql import SQLException, BuilderBase
+from .SQLException import SQLException
+from .BuilderBase import BuilderBase
 
 
 class SQLAdder(BuilderBase):

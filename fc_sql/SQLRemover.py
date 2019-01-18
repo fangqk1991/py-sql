@@ -1,4 +1,5 @@
-from fc_sql import BuilderBase, SQLException
+from .SQLException import SQLException
+from .BuilderBase import BuilderBase
 
 
 class SQLRemover(BuilderBase):
