@@ -15,7 +15,7 @@ with open(REQUIREMENTS) as f:
     reqs = f.read()
 
 setup(
-    name='fc_model',
+    name='fc_sql',
     version='0.1.0',
     description='sql framework for python',
     license='MIT Licence',
