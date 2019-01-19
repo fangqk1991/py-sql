@@ -1,5 +1,6 @@
 from .SQLException import SQLException
 from .BuilderBase import BuilderBase
+from .FCDatabase import FCDatabase
 
 
 class SQLModifier(BuilderBase):
@@ -7,8 +8,8 @@ class SQLModifier(BuilderBase):
     __updateColumns: list = None
     __updateValues: list = None
 
-    def __init__(self, sql_db):
-        super().__init__(sql_db)
+    def __init__(self, db: FCDatabase):
+        super().__init__(db)
         self.__updateColumns = []
         self.__updateValues = []
 
@@ -27,7 +28,7 @@ class SQLModifier(BuilderBase):
         query = 'UPDATE %s SET %s WHERE %s' % (self._table,
                                                ', '.join(self.__updateColumns),
                                                ' AND '.join(self._conditions()))
-        self._mysqlDB.update(query, self._stmt_values())
+        self._database.update(query, self._stmt_values())
 
     def _stmt_values(self):
         return self.__updateValues + self._conditionValues

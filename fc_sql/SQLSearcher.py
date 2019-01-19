@@ -1,4 +1,6 @@
 import re
+
+from .FCDatabase import FCDatabase
 from .SQLException import SQLException
 from .BuilderBase import BuilderBase
 
@@ -14,8 +16,8 @@ class SQLSearcher(BuilderBase):
     __orderRules: list = None
     __optionStr: str = None
 
-    def __init__(self, sql_db):
-        super().__init__(sql_db)
+    def __init__(self, db: FCDatabase):
+        super().__init__(db)
         self.__queryColumns = []
         self.__orderRules = []
 
@@ -82,7 +84,7 @@ class SQLSearcher(BuilderBase):
         if self.__page >= 0 and self.__feedsPerPage > 0:
             query = '%s LIMIT %d, %d' % (query, self.__page * self.__feedsPerPage, self.__feedsPerPage)
 
-        return self._mysqlDB.query(query, params)
+        return self._database.query(query, params)
 
     def query_single(self):
         items = self.query_list()
@@ -102,5 +104,5 @@ class SQLSearcher(BuilderBase):
         if len(conditions) > 0:
             query = '%s WHERE %s' % (query, self.build_condition_str())
 
-        result = self._mysqlDB.query(query, self._stmt_values())
+        result = self._database.query(query, self._stmt_values())
         return result[0]['count']

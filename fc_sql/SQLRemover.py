@@ -14,5 +14,5 @@ class SQLRemover(BuilderBase):
             self._table,
             ' AND '.join(self._conditions())
         )
-        self._mysqlDB.update(query, self._stmt_values())
+        self._database.update(query, self._stmt_values())
 

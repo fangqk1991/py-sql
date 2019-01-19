@@ -4,13 +4,13 @@ from .SQLException import SQLException
 
 class BuilderBase:
 
-    _mysqlDB: FCDatabase = None
+    _database: FCDatabase = None
     _table: str = None
     _conditionColumns: list = None
     _conditionValues: list = None
 
     def __init__(self, db: FCDatabase):
-        self._mysqlDB = db
+        self._database = db
         self._conditionColumns = []
         self._conditionValues = []
 

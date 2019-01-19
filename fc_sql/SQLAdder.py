@@ -1,5 +1,6 @@
 from .SQLException import SQLException
 from .BuilderBase import BuilderBase
+from .FCDatabase import FCDatabase
 
 
 class SQLAdder(BuilderBase):
@@ -7,8 +8,8 @@ class SQLAdder(BuilderBase):
     __insertKeys: list = None
     __insertValues: list = None
 
-    def __init__(self, sql_db):
-        super().__init__(sql_db)
+    def __init__(self, db: FCDatabase):
+        super().__init__(db)
         self.__insertKeys = []
         self.__insertValues = []
 
@@ -25,7 +26,7 @@ class SQLAdder(BuilderBase):
             self._table,
             ', '.join(self.__insertKeys),
             self.__marks_of_insert_query())
-        self._mysqlDB.update(query, self._stmt_values())
+        self._database.update(query, self._stmt_values())
 
     def __marks_of_insert_query(self):
         marks = ['%s'] * len(self._stmt_values())

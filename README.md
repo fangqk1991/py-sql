@@ -29,12 +29,11 @@ def update(self, query, params)
 ```
 # 初始化方法
 def __init__(self, db: FCDatabase)
-ms[key])
 
 # 添加执行条件（简单匹配）
 def add_condition_kv(self, key, value)
 
-// 添加执行条件（自定义）
+# 添加执行条件（自定义）
 def add_special_condition(self, condition, *args)
 ```
 
