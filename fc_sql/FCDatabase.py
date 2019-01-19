@@ -57,3 +57,19 @@ class FCDatabase:
             connection.commit()
             cursor.close()
             connection.close()
+
+    def fc_adder(self):
+        from .SQLAdder import SQLAdder
+        return SQLAdder(self)
+
+    def fc_modifier(self):
+        from .SQLModifier import SQLModifier
+        return SQLModifier(self)
+
+    def fc_remover(self):
+        from .SQLRemover import SQLRemover
+        return SQLRemover(self)
+
+    def fc_searcher(self):
+        from .SQLSearcher import SQLSearcher
+        return SQLSearcher(self)
