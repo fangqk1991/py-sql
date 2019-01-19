@@ -1,4 +1,4 @@
-from .FCSQL import FCSQL
+from .FCDatabase import FCDatabase
 from .BuilderBase import BuilderBase
 from .SQLException import SQLException
 from .DBTools import DBTools

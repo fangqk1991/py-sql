@@ -1,10 +1,10 @@
-from .FCSQL import FCSQL
+from .FCDatabase import FCDatabase
 from .SQLException import SQLException
 
 
 class BuilderBase:
 
-    _mysqlDB: FCSQL = None
+    _mysqlDB: FCDatabase = None
     _table: str = None
     _conditionColumns: list = None
     _conditionValues: list = None

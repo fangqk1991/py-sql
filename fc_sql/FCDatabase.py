@@ -7,7 +7,7 @@ from pymysql import OperationalError
 from pymysql.cursors import DictCursor
 
 
-class FCSQL:
+class FCDatabase:
 
     __host = None
     __account = None
@@ -24,21 +24,13 @@ class FCSQL:
     def connect(self):
         return pymysql.connect(self.__host, self.__account, self.__password, self.__db_name)
 
-    def query(self, query, params, retry=False):
+    def query(self, query, params):
 
         query = re.sub('\?', '%s', query)
 
         connection = self.connect()
         with connection.cursor(DictCursor) as cursor:
-
-            try:
-                cursor.execute(query, params)
-            except OperationalError as e:
-                if not retry:
-                    self.query(query, params, True)
-                else:
-                    raise e
-
+            cursor.execute(query, params)
             records = []
             for row in cursor:
                 for k, v in row.items():
