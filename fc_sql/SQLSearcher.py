@@ -28,13 +28,6 @@ class SQLSearcher(BuilderBase):
     def add_column(self, column):
         self.__queryColumns.append(column)
 
-    def set_page_info(self, page, feeds_per_page):
-        self.__page = page
-        self.__feedsPerPage = feeds_per_page
-
-    def set_option_str(self, option_str):
-        self.__optionStr = option_str
-
     def add_order_rule(self, sort_key, direction):
         if not re.match('\w+', direction):
             return
@@ -44,6 +37,13 @@ class SQLSearcher(BuilderBase):
             direction = ''
 
         self.__orderRules.append({'sort_key': sort_key, 'sort_direction': direction})
+
+    def set_page_info(self, page, feeds_per_page):
+        self.__page = page
+        self.__feedsPerPage = feeds_per_page
+
+    def set_option_str(self, option_str):
+        self.__optionStr = option_str
 
     def order_rules(self):
         return self.__orderRules

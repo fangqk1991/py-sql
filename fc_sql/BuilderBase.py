@@ -9,8 +9,8 @@ class BuilderBase:
     _conditionColumns: list = None
     _conditionValues: list = None
 
-    def __init__(self, sql_db):
-        self._mysqlDB = sql_db
+    def __init__(self, db: FCDatabase):
+        self._mysqlDB = db
         self._conditionColumns = []
         self._conditionValues = []
 
